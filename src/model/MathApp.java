@@ -73,15 +73,6 @@ public class MathApp{
 
 	}
 
-	public boolean findElement(IntegerSet set,   int element){
-		boolean exit=false;
-		for(int i=0; i<set.getCardinality() && !exit;i++){
-			if(set.getElements().get(i)==element){
-				exit=true;
-			}
-		}
-		return exit;
-	}
 
 	public String addElementToSetToString(String setName, int element){
 		String message="";
@@ -91,7 +82,7 @@ public class MathApp{
 			message="Error. El nombre del conjunto no existe";
 		}
 		else{
-			found=findElement(objSet, element);
+			found=objSet.findElement(element);
 			if(found){
 				message="Error. El elemento ya estaba en el conjunto";
 			}
@@ -118,7 +109,7 @@ public class MathApp{
 			message="Error. El nombre del conjunto no existe";
 		}
 		else{
-			found=findElement(objSet, element);
+			found=objSet.findElement(element);
 			if(found){
 				removeElementFromSet(setName, element);
 				message="El elemento ha sido removido del conjunto exitosamente";

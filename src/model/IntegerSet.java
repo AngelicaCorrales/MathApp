@@ -25,6 +25,16 @@ public class IntegerSet{
 		return elements;
 	}
 
+	public boolean findElement(int element){
+		boolean exit=false;
+		for(int i=0; i<cardinality && !exit;i++){
+			if(elements.get(i)==element){
+				exit=true;
+			}
+		}
+		return exit;
+	}
+
 	public void addElement(int element){
 		elements.add(element);
 		cardinality++;
@@ -38,8 +48,17 @@ public class IntegerSet{
 
 	public IntegerSet union(IntegerSet set, String newName){
 		IntegerSet objNew= new IntegerSet(newName);
+		boolean found;
 		for(int i=0; i<cardinality;i++){
-			objNew.getElements().add(elements.get(i));
+			objNew.addElement(elements.get(i));
+		}
+
+		for(int i=0; i<set.getCardinality();i++){
+			int element=set.getElements().get(i);
+			found=findElement(element);
+			if(!found){
+				objNew.addElement(element);
+			}
 		}
 		return objNew;
 	}
