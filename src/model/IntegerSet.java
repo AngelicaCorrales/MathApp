@@ -67,6 +67,20 @@ public class IntegerSet{
 		IntegerSet objNew= new IntegerSet(newName);
 		boolean found;
 		for(int i=0; i<cardinality;i++){
+			int element=elements.get(i);
+			found=set.findElement(element);
+			if(!found){
+				objNew.addElement(element);
+			}
+		}
+		return objNew;
+
+	}
+
+	public IntegerSet intersection(IntegerSet set, String newName){
+		IntegerSet objNew= new IntegerSet(newName);
+		boolean found;
+		for(int i=0; i<set.getCardinality();i++){
 			int element=set.getElements().get(i);
 			found=findElement(element);
 			if(found){
@@ -74,10 +88,6 @@ public class IntegerSet{
 			}
 		}
 		return objNew;
-	}
-
-	public IntegerSet intersection(IntegerSet set, String newName){
-		return set;
 	}
 
 	public IntegerSet symmetricDifference(IntegerSet set, String newName){
