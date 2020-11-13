@@ -19,7 +19,7 @@ public class MathApp{
 
 		
 		for(int i=0;i<sets.size() && !exist;i++){
-			if(sets.get(i).getName().equals(name)){
+			if(sets.get(i).getName().equalsIgnoreCase(name)){
 				exist=true;
 				objSet=sets.get(i);
 			}
