@@ -208,11 +208,22 @@ public class MathApp{
 	}
 
 	public String showInfoSet(String name){
-		return "";
+		IntegerSet objSet=findSet(name);
+		String info= "";
+		if(objSet==null){
+		 info="Error. El conjunto no existe";
+		}else{
+			info=objSet.showContents();
+		}
+		return info;
 	}
 
 	public String showInfoSets(){
-		return "";
+		String info="";
+		for(int i=0; i<amount; i++){
+			info+=sets.get(i).showContents();
+		}
+		return info;
 	}
 
 

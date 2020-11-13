@@ -112,6 +112,16 @@ public class IntegerSet{
 	}
 
 	public String showContents(){
-		return "";
+		String elementsSet="";
+		for(int i=0; i<cardinality;i++){
+			if(i!=cardinality-1){
+				elementsSet+=elements.get(i)+", ";
+			}
+			else{
+				elementsSet+=elements.get(i);
+			}
+		}
+
+		return "Nombre del conjunto: "+name+"\nElementos del conjunto: {"+elementsSet+"} \n \n";
 	}
 }
