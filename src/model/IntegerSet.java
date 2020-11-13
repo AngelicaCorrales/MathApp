@@ -64,7 +64,16 @@ public class IntegerSet{
 	}
 
 	public IntegerSet difference(IntegerSet set, String newName){
-		return set;
+		IntegerSet objNew= new IntegerSet(newName);
+		boolean found;
+		for(int i=0; i<cardinality;i++){
+			int element=set.getElements().get(i);
+			found=findElement(element);
+			if(found){
+				objNew.addElement(element);
+			}
+		}
+		return objNew;
 	}
 
 	public IntegerSet intersection(IntegerSet set, String newName){

@@ -130,6 +130,22 @@ public class MathApp{
 		IntegerSet objSetNew=objSet1.union(objSet2, newName);
 		sets.add(objSetNew);
 		amount++;
+	}
+
+	public void difference(String name1, String name2, String newName){
+		IntegerSet objSet1=findSet(name1);
+		IntegerSet objSet2=findSet(name2);
+
+		IntegerSet objSetNew=objSet1.difference(objSet2, newName);
+		sets.add(objSetNew);
+		amount++;
+	}
+
+	public void intersection(String name1, String name2, String newName){
+
+	}
+
+	public void symmetricDifference(String name1, String name2, String newName){
 
 	}
 
@@ -142,6 +158,7 @@ public class MathApp{
 		if(objSet1==null){
 			message=" Error. el nombre del primer conjunto no existe.";
 		}
+
 		if(objSet2==null){
 			message+=" Error. el nombre del segundo conjunto no existe.";
 		}
@@ -150,23 +167,34 @@ public class MathApp{
 			message+=" Error. el nombre del nuevo conjunto ya existe.";
 		}
 
-		if(objSet1!=null && objSet2!=null && objSet3==null && operation==1){
-			union(name1,name2,newName);
-			message="Union realizada con exito";
+		if(objSet1==objSet2){
+			message="Ha ingresado los mismos conjuntos";
 		}
+		else{
+
+			if(objSet1!=null && objSet2!=null && objSet3==null && operation==1){
+				union(name1,name2,newName);
+				message="Union realizada con exito";
+			}
+
+			if(objSet1!=null && objSet2!=null && objSet3==null && operation==2){
+				difference(name1,name2,newName);
+				message="Diferencia realizada con exito";
+
+			}
+
+			if(objSet1!=null && objSet2!=null && objSet3==null && operation==3){
+				intersection(name1,name2,newName);
+				message="Interseccion realizada con exito";
+			}
+
+			if(objSet1!=null && objSet2!=null && objSet3==null && operation==4){
+				symmetricDifference(name1,name2,newName);
+				message="Diferencia simetrica realizada con exito";
+			}
+		}
+
 		return message;
-	}
-
-	public void difference(String name1, String name2, String newName){
-
-	}
-
-	public void intersection(String name1, String name2, String newName){
-
-	}
-
-	public void symmetricDifference(String name1, String name2, String newName){
-
 	}
 
 	public String showInfoSet(String name){
