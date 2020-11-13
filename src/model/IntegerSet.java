@@ -91,7 +91,24 @@ public class IntegerSet{
 	}
 
 	public IntegerSet symmetricDifference(IntegerSet set, String newName){
-		return set;
+		IntegerSet objNew= new IntegerSet(newName);
+		boolean found;
+		for(int i=0; i<cardinality;i++){
+			int element=elements.get(i);
+			found=set.findElement(element);
+			if(!found){
+				objNew.addElement(element);
+			}
+		}
+
+		for(int i=0; i<set.getCardinality();i++){
+			int element=set.getElements().get(i);
+			found=findElement(element);
+			if(!found){
+				objNew.addElement(element);
+			}
+		}
+		return objNew;
 	}
 
 	public String showContents(){

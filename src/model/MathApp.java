@@ -151,7 +151,12 @@ public class MathApp{
 	}
 
 	public void symmetricDifference(String name1, String name2, String newName){
+		IntegerSet objSet1=findSet(name1);
+		IntegerSet objSet2=findSet(name2);
 
+		IntegerSet objSetNew=objSet1.symmetricDifference(objSet2, newName);
+		sets.add(objSetNew);
+		amount++;
 	}
 
 	public String operationToString(String name1, String name2, String newName, int operation){
