@@ -25,7 +25,7 @@ public class IntegerSet{
 		return elements;
 	}
 
-	public boolean findElement(int element){
+	public boolean findElement(Integer element){
 		boolean exit=false;
 		for(int i=0; i<cardinality && !exit;i++){
 			if(elements.get(i)==element){
@@ -35,12 +35,12 @@ public class IntegerSet{
 		return exit;
 	}
 
-	public void addElement(int element){
+	public void addElement(Integer element){
 		elements.add(element);
 		cardinality++;
 	}
 
-	public void removeElement(int element){
+	public void removeElement(Integer element){
 		int i=elements.indexOf(element);
 		elements.remove(i);
 		cardinality--;
@@ -54,7 +54,7 @@ public class IntegerSet{
 		}
 
 		for(int i=0; i<set.getCardinality();i++){
-			int element=set.getElements().get(i);
+			Integer element=set.getElements().get(i);
 			found=findElement(element);
 			if(!found){
 				objNew.addElement(element);
@@ -67,7 +67,7 @@ public class IntegerSet{
 		IntegerSet objNew= new IntegerSet(newName);
 		boolean found;
 		for(int i=0; i<cardinality;i++){
-			int element=elements.get(i);
+			Integer element=elements.get(i);
 			found=set.findElement(element);
 			if(!found){
 				objNew.addElement(element);
@@ -111,7 +111,7 @@ public class IntegerSet{
 		return objNew;
 	}
 
-	public String showContents(){
+	public String toString(){
 		String elementsSet="";
 		for(int i=0; i<cardinality;i++){
 			if(i!=cardinality-1){
@@ -121,7 +121,10 @@ public class IntegerSet{
 				elementsSet+=elements.get(i);
 			}
 		}
+		if(elements.isEmpty()){
+			elementsSet="vacio";
+		}
 
-		return "Nombre del conjunto: "+name+"\nElementos del conjunto: {"+elementsSet+"} \n \n";
+		return name+"={"+elementsSet+"} \n \n";
 	}
 }

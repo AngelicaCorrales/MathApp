@@ -77,8 +77,7 @@ public class Main{
 		System.out.println("Ingrese el nombre del conjunto");
 		String setName=sc.nextLine();
 
-		String message="";
-		message=mathapp.addSetToString(setName);
+		String message=mathapp.addSetToString(setName);
 
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
@@ -93,8 +92,7 @@ public class Main{
 		System.out.println("Ingrese el nombre del conjunto");
 		String setName=sc.nextLine();
 
-		String message="";
-		message=mathapp.removeSetToString(setName);
+		String message=mathapp.removeSetToString(setName);
 
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
@@ -104,19 +102,123 @@ public class Main{
 	public void addElementToSet(){
 		sc.nextLine();
 		System.out.println("-----------------------------------------------------------");
-		System.out.println("AGREGAR ELEMENTO A UN CONJUNTO \n");
+		System.out.println("AGREGAR ELEMENTO DE UN CONJUNTO \n");
 
 		System.out.println("Ingrese el nombre del conjunto");
 		String setName=sc.nextLine();
 
-		System.out.println("Ingrese el numero entero a agregar");
+		System.out.println("\nIngrese el numero entero a agregar");
 		int element=sc.nextInt();
 
-		String message="";
-		message=mathapp.addSetToString(setName);
+		String message=mathapp.addElementToSetToString(setName, element);
 
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
 	}
+
+	public void removeElementFromSet(){
+		sc.nextLine();
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("ELIMINAR ELEMENTO A UN CONJUNTO \n");
+
+		System.out.println("Ingrese el nombre del conjunto");
+		String setName=sc.nextLine();
+
+		System.out.println("\nIngrese el numero entero a eliminar");
+		int element=sc.nextInt();
+
+		String message=mathapp.removeElementFromSetToString(setName, element);
+
+		System.out.println("-----------------------------------------------------------");
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+	}
+
+	public void setOperations(){
+		boolean error;
+		int option;
+		int op;
+		
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("REALIZAR OPERACION ENTRE DOS CONJUNTO \n");
+		do{
+			error=false;
+			System.out.println("Seleccione la operacion que desea realizar:\n"+
+				"(1) Union\n"+
+				"(2) Diferencia \n"+
+				"(3) Interseccion \n"+
+				"(4) Diferencia simetrica");
+			option= sc.nextInt();
+			if(option!=1 && option!=2 && option!=3 && option!=4){
+				error=true;
+			}
+		}while(error);
+
+			sc.nextLine();
+
+			System.out.println("Ingrese el nombre del conjunto 1");
+			String setName1=sc.nextLine();
+
+			System.out.println("\nIngrese el nombre del conjunto 2");
+			String setName2=sc.nextLine();
+
+			System.out.println("\nIngrese el nombre del nuevo conjunto");
+			String newName=sc.nextLine();
+
+			if(option==2){
+
+					do{
+						error=false;
+						System.out.println("\nEspecifique la diferencia\n"+
+								"(1) "+setName1+" - "+setName2+"\n"+
+								"(2) "+setName2+" - "+setName1);
+						op= sc.nextInt();
+
+						if(op!=1 && option!=2){
+							error=true;
+						}
+
+					}while(error);
+					if(op==2){
+						String x=setName1;
+						setName1=setName2;
+						setName2=x;
+					}
+				}
+
+
+			String message=mathapp.operationToString(setName1, setName2, newName, option);
+
+		System.out.println("-----------------------------------------------------------\n");
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+
+
+	}
+
+	public void showInfoSet(){
+		sc.nextLine();
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR CONTENIDO DE UN CONJUNTO PARTICULAR\n");
+
+		System.out.println("Ingrese el nombre del conjunto");
+		String setName=sc.nextLine();
+
+		String message="\n"+mathapp.showInfoSet(setName);
+
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+	}
+
+	public void showInfoSets(){
+		sc.nextLine();
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR CONTENIDO DE TODOS LOS CONJUNTOS\n");
+		String message=mathapp.showInfoSets();
+
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+	}
+
 }

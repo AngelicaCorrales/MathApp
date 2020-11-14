@@ -177,31 +177,32 @@ public class MathApp{
 			message+=" Error. el nombre del nuevo conjunto ya existe.";
 		}
 
-		if(objSet1==objSet2){
-			message="Ha ingresado los mismos conjuntos";
+		if(objSet1!=null && objSet2!=null && objSet1==objSet2){
+			message+=" Ha ingresado los mismos conjuntos \n";
 		}
 		else{
 
 			if(objSet1!=null && objSet2!=null && objSet3==null && operation==1){
 				union(name1,name2,newName);
-				message="Union realizada con exito";
+				message="Union realizada con exito: "+showInfoSet(newName);
 			}
 
 			if(objSet1!=null && objSet2!=null && objSet3==null && operation==2){
 				difference(name1,name2,newName);
-				message="Diferencia realizada con exito";
+				message="Diferencia realizada con exito: "+showInfoSet(newName);
 
 			}
 
 			if(objSet1!=null && objSet2!=null && objSet3==null && operation==3){
 				intersection(name1,name2,newName);
-				message="Interseccion realizada con exito";
+				message="Interseccion realizada con exito: "+showInfoSet(newName);
 			}
 
 			if(objSet1!=null && objSet2!=null && objSet3==null && operation==4){
 				symmetricDifference(name1,name2,newName);
-				message="Diferencia simetrica realizada con exito";
+				message="Diferencia simetrica realizada con exito: "+showInfoSet(newName);
 			}
+
 		}
 
 		return message;
@@ -213,7 +214,7 @@ public class MathApp{
 		if(objSet==null){
 		 info="Error. El conjunto no existe";
 		}else{
-			info=objSet.showContents();
+			info=objSet.toString();
 		}
 		return info;
 	}
@@ -221,7 +222,10 @@ public class MathApp{
 	public String showInfoSets(){
 		String info="";
 		for(int i=0; i<amount; i++){
-			info+=sets.get(i).showContents();
+			info+=sets.get(i).toString();
+		}
+		if(sets.isEmpty()){
+			info="No se han agregado conjuntos";
 		}
 		return info;
 	}
